@@ -1,22 +1,17 @@
 package drivers;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverProvider;
-import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 
-public class BrowserstackMobileDriver implements WebDriverProvider {
+public class BrowserstackMobileDriverIOS implements WebDriverProvider {
 
-    public static URL getBrowserstackUrlAndroid() {
+    public static URL getBrowserstackURLiOS() {
         try {
             return new URL("http://hub.browserstack.com/wd/hub");
         } catch (MalformedURLException e) {
@@ -32,18 +27,17 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
         desiredCapabilities.setCapability("browserstack.key", "sYsMVx7uqgucREFWsyvV");
 
         // Set URL of the application under test
-        desiredCapabilities.setCapability("app", "bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
+        desiredCapabilities.setCapability("app", "bs://444bd0308813ae0dc236f8cd461c02d3afa7901d");
 
         // Specify device and os_version for testing
-        desiredCapabilities.setCapability("device", "Google Pixel 3");
-        desiredCapabilities.setCapability("os_version", "9.0");
+        desiredCapabilities.setCapability("device", "iPhone 12 Mini");
+        desiredCapabilities.setCapability("os_version", "14");
 
         // Set other BrowserStack capabilities
         desiredCapabilities.setCapability("project", "First Java Project");
-        desiredCapabilities.setCapability("build", "Java Android");
+        desiredCapabilities.setCapability("build", "Java iOS");
         desiredCapabilities.setCapability("name", "first_test");
 
-        return new AndroidDriver(getBrowserstackUrlAndroid(), desiredCapabilities);
+        return new IOSDriver(getBrowserstackURLiOS(), desiredCapabilities);
     }
-
 }
